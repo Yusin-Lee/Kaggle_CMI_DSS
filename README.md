@@ -24,3 +24,4 @@ Child Mind Institute - Detect Sleep States
 - 수면 상태 및 활동 상태는 time step 주변 N분 동안은 동일한 상태일 가능성이 높다는 가정 하에 매 time step의 상태를 마다 30분 내의 가장 많이 예측된 상태로 변환
 - 0시 ~ 6시 사이의 onset은 이전 일자의 onset으로 취급
 - onset과 wakeup은 매일 한 번 발생하므로 가장 늦게 발생한 onset과 가장 먼저 발생한 wakeup을 선택
+- @ 2023 10 19 추가내용 : onset과 wakeup이 발생한 시각이 1% 미만인 경우(in train set) 제외하고, 가장 먼저 발생한 onset과 가장 늦게 발생한 wakeup을 선택
