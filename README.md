@@ -17,7 +17,7 @@ Child Mind Institute - Detect Sleep States
    - 전처리 방식
      - anglez, enmo를 standard normalize (mean과 std는 전체 train set에서 계산)
      - 매 time step마다 이전 N분, 이후 N분 내의 변수의 std와 mean을 계산 [N = 60, 360, 720] -> [5m, 30m, 60m(1h)]
-     - 추가할 내용 : Lids(refer - https://www.kaggle.com/competitions/child-mind-institute-detect-sleep-states/discussion/444007) -> 효과 ?
+     - 추가할 내용 : Lids(refer - https://www.kaggle.com/competitions/child-mind-institute-detect-sleep-states/discussion/444007) -> 성능 향상에는 의문부호
 
    - 후처리 방식
      - 수면 상태 및 활동 상태는 time step 주변 N분 동안은 동일한 상태일 가능성이 높다는 가정 하에 매 time step의 상태를 마다 30분 내의 가장 많이 예측된 상태로 변환
@@ -29,7 +29,8 @@ Child Mind Institute - Detect Sleep States
 3. DL base
    - 전처리 방식
      - anglez, enmo를 standard normalize (mean과 std는 전체 train set에서 계산)
-     - 매 time step의 이전 3분, 이후 3분의 anglez, enmo를 1d로 묶어 사용 -> [B, C, L]  == [B, 2(anglez, enmo), 72]
+     - 매 time step마다 이전 N분, 이후 N분 내의 변수의 std와 mean을 계산 [N = 60, 360, 720] -> [5m, 30m, 60m(1h)]
+     - 매 time step의 이전 3분, 이후 3분의 anglez, enmo, 이전에 만든 변수를 1d로 묶어 사용 -> [B, C, L]  == [B, 27(anglez, enmo, ...), 72]
 
    - 후처리 방식
      - ML과 동일하게 처리
