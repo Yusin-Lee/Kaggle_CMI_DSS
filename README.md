@@ -7,11 +7,14 @@ Child Mind Institute - Detect Sleep States
    - anglez, enmo는 5초마다 측정
    - 270여 개의 train set 중에서 측정 기간 내 events가 빠진 Id를 제거하여 35개의 데이터 셋을 사용(refer - https://www.kaggle.com/code/carlmcbrideellis/zzzs-make-small-starter-datasets-target)
    - 하루에 1번의 onset과 wakeup만 존재. 다만, onset이 자정(00시)를 넘긴 시점에서는 하루에 2번의 onset이 존재할 수 있음. (ex, x월 27일 1시 onset -> x월 27일 8시 wakeup -> x월 27일 23시 onset)
+   - train dataset 내에 event는 모두 onset으로 시작하여 wakeup으로 끝
+   - event는 모두 {onset - wakeup} 페어로 이루어졌으나, 둘 중 하나가 Nan인 경우는 존재
    - 방식은 DL Base(Torch의 Conv1d베이스)와 ML Base(LGBM베이스) 나누어 시도
    - 태스크를 활동 상태와 수면 상태를 분류하는 classification으로 진행
    - (활동 상태 -> 수면 상태) 변화하는 시점을 onset으로, (수면 상태 -> 활동 상태) 변화하는 시점을 wakeup으로 간주
    - onset과 wakeup은 특정 시간에 주로 발생(ex, onset은 19시 ~ 03시, wakeup은 04시 ~ 11시)
    - 추가할 내용 : 35개의 데이터 셋을 기반으로 학습한 모델로 나머지 270여개의 데이터셋을 수도 라벨링 -> ML base result + DL base result
+   
 
 
 
