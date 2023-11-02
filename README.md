@@ -7,6 +7,7 @@ Child Mind Institute - Detect Sleep States
    - anglez, enmo는 5초마다 측정
    - 270여 개의 train set 중에서 측정 기간 내 events에 결측이 있는 ID를 제거하여 35개의 데이터 셋을 사용(refer - https://www.kaggle.com/code/carlmcbrideellis/zzzs-make-small-starter-datasets-target)
    - @ 2023 11 01 추가 내용 : 결측이 있는 데이터는 결측을 제외한 날짜만 사용하여 trainset으로, 결측이 없는 35개의 데이터는 valid set으로 사용
+   - @ 데이터 중 7개 이상의 {onset - wakeup} 페어가 있는 ID만 사용
    - 하루에 1번의 onset과 wakeup만 존재. 다만, onset이 자정(00시)를 넘긴 시점에서는 하루에 2번의 onset이 존재할 수 있음. (ex, x월 27일 1시 onset -> x월 27일 8시 wakeup -> x월 27일 23시 onset)
    - train dataset 내에 event는 모두 onset으로 시작하여 wakeup으로 끝
    - @ 2023 11 01 추가 내용 : event는 모두 {onset - wakeup} 페어로 이루어졌으나, 둘 중 하나가 Nan인 경우는 존재 -> pair group으로 묶어 둘 중 하나가 Nan경우는 제외
